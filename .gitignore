@@ -1,0 +1,33 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Maven
+target/
+**/target/
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# macOS
+.DS_Store
+
+# Java
+*.class
+
+# Temporary files
+*.tmp
+*.swp
