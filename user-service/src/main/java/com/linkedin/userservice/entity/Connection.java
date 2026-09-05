@@ -1,10 +1,10 @@
 package com.linkedin.userservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -14,10 +14,23 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Connection {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+
     private String id;
+
+    @Column(nullable = false)
     private String requesterId;
+
+    @Column(nullable = false)
+
     private String receiverId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ConnectionStatus status;
+
+    @CreationTimestamp
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
