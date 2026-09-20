@@ -55,57 +55,6 @@ Kafka decouples services that produce business events from services that react t
 | `post.liked` | Post Service | Notification Service | Notify the post author |
 | `post.commented` | Post Service | Notification Service | Notify the post author |
 
-### Example event flow
-
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant G as API Gateway
-    participant P as Post Service
-    participant K as Kafka
-    participant F as Feed Service
-    participant S as Search Service
-    participant R as Redis
-    participant E as Elasticsearch
-
-    C->>G: Create post
-    G->>P: Authenticated request
-    P->>P: Persist post
-    P->>K: Publish post.created
-
-    par Feed processing
-        K-->>F: post.created
-        F->>R: Push post ID to feeds
-    and Search indexing
-        K-->>S: post.created
-        S->>E: Index post document
-    end
-```
-
----
-
-## Authentication Flow
-
-The **User Service** is responsible for authenticating credentials and generating JWTs.
-
-The **API Gateway** performs centralized JWT validation for protected routes.
-
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant U as User Service
-    participant G as API Gateway
-    participant D as Downstream Service
-
-    C->>U: Login / Register
-    U-->>C: Access token + refresh token
-
-    C->>G: Request + Bearer JWT
-    G->>G: Validate JWT
-    G->>D: Forward request<br/>X-User-Id / X-User-Email
-    D-->>C: Response
-```
-
 Public authentication endpoints can be accessed without a token, while protected user, post, feed and search operations are routed through the gateway.
 
 ---
