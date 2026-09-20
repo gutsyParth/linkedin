@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/v1/auth")
 @Slf4j
 @RequiredArgsConstructor
 public class AuthController {
@@ -28,6 +28,7 @@ public class AuthController {
     return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(request));
   }
 
+  @PostMapping("/login")
   public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
     log.info("Login request:{}", request.getEmail());
 

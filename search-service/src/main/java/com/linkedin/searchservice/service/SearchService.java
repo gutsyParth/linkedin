@@ -1,4 +1,4 @@
-package com.linkedin.searchservice.search;
+package com.linkedin.searchservice.service;
 
 import com.linkedin.searchservice.model.PostDocument;
 import com.linkedin.searchservice.model.UserDocument;

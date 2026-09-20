@@ -1,4 +1,4 @@
-package com.linkedin.searchservice.search;
+package com.linkedin.searchservice.service;
 
 import com.linkedin.searchservice.model.PostDocument;
 import com.linkedin.searchservice.model.UserDocument;
@@ -40,7 +40,7 @@ public class SearchEventConsumer {
   }
 
   @KafkaListener(topics = "user.updated")
-  public void consumeUserUpdates(@Payload Map<String, Object> payload) {
+  public void consumeUserUpdated(@Payload Map<String, Object> payload) {
     try {
       String userId = (String) payload.get("userId");
       log.info("Updating user index: {}", userId);

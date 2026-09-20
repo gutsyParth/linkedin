@@ -81,7 +81,7 @@ public class AuthService {
   }
 
   public AuthResponse login(LoginRequest request) {
-    log.info("Login attemp: {}", request.getEmail());
+    log.info("Login attempt: {}", request.getEmail());
     User user =
         userRepository
             .findByEmail(request.getEmail())

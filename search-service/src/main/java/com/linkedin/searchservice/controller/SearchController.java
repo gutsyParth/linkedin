@@ -2,7 +2,7 @@ package com.linkedin.searchservice.controller;
 
 import com.linkedin.searchservice.model.PostDocument;
 import com.linkedin.searchservice.model.UserDocument;
-import com.linkedin.searchservice.search.SearchService;
+import com.linkedin.searchservice.service.SearchService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
